@@ -17,24 +17,40 @@
             <div class="button-create">
                 <form action="{{Route('createNote')}}" method="GET">
                     <button type="submit" class="create-content">
-                        Create Note
+                        +
                     </button>
                 </form>
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
             </div>
+        @endif
+
+        @if ($notes->isEmpty())
+            <div class="alert alert-warning">
+                No notes available.
+            </div>
+
+
+        @endif
             <div class="note-lists">
                 @foreach ($notes as $note)
                     <form action="{{Route('showOneNote', ['id' => $note->id])}}" method="GET">
                     <button type="submit" class="note-lists-buttons">
-                        <div>Title: {{$note->title}}</div>
-                        <div>Description:{{$note->desc}}</div>
+                        <div class="title">{{$note->title}}</div>
+                        <div class="desc">{{$note->desc}}</div>
                     </button>
                     </form>
                     <hr>
                 @endforeach
             </div>
         </div>
+        @endif
     </main>
 
 
 </body>
 </html>
+
+

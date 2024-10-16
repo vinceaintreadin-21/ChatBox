@@ -4,11 +4,21 @@ html, body {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+header h1 {
+    text-align: center;
+    justify-content: center;
 }
 
 body {
     width: 100vw; /* Full width of the viewport */
-    height: 100vh; /* Full height of the viewport */
+    height: 100vh;
 }
 
 .button-create {
@@ -23,7 +33,7 @@ body {
     bottom: 30px;
     right: 20px;
     padding: 0 auto;
-    border: solid;
+    border: solid black;
     height: 60px;
     width: 60px;
     border-radius: 50px;
@@ -33,6 +43,8 @@ body {
     justify-content: center;
     text-decoration: none;
     text-align: center;
+    font-size: 20px;
+    color: white;
     background-color: #007bff;
 }
 
@@ -43,15 +55,16 @@ body {
 }
 
 .note-lists {
-    width: 100%; /* Full width */
-    padding: 0 20px; /* Optional padding on the sides */
-    margin: 0; /* Remove any margin */
+    width: 100%;
+    padding: 0 20px;
+    margin: 0;
     justify-content: center;
 }
 
 .note-lists-buttons {
-    width: 100%; /* Ensures the button stretches to full width of its parent */
-    max-width: 95vw;
+    width: 100%;
+    max-width: 95vw; /* Limits the width */
+    height: 100px;
     padding: 15px;
     align-items: center;
     background-color: #f8f9fa;
@@ -62,15 +75,18 @@ body {
     display: block;
     font-family: Arial, sans-serif;
     box-sizing: border-box;
+     overflow: hidden;    /*para di mag overflow yung content */
+    white-space: nowrap; /*hide nya lng yung content na sobra */
+    text-overflow: ellipsis; /*diko alam toh nakita ko lng yan sa stackoverflow */
 }
 
-.note-title {
+.title {
     font-weight: bold;
     margin-bottom: 5px;
     font-size: 18px;
 }
 
-.note-desc {
+.desc {
     font-size: 14px;
     color: #555;
 }

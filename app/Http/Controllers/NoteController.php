@@ -28,8 +28,8 @@ class NoteController extends Controller
 
     public function storeNote(Request $request){
         $validated = $request->validate([
-            'title' => 'nullable|string|max:255',
-            'desc' => 'nullable|string|max:100000'
+            'title' => 'required|string|max:255',
+            'desc' => 'required|string|max:100000'
         ]);
 
         $notes = new Note();
@@ -38,37 +38,35 @@ class NoteController extends Controller
         $notes->desc = $validated['desc'];
         $notes->save();
 
-        return redirect()->route('showAllNotes')->with('success', 'Note Successfully Created');
+        return redirect()->route('showAllNotes')->with('success');
     }
 
     public function editNote(Request $request){
         $note = Note::find($request->id);
 
         if(!$note){
-            return redirect()->route('showAllNotes')->with('error', 'Note Not Found');
+            return redirect()->route('showAllNotes')->with('error');
         }
         return view('edit-note', ['note'=>$note]);
     }
 
-    public function updateNote(Request $request){
-        $note = Note::find($request->id);
+    public function updateNote(Request $request, $id){
+        $note = Note::find($id);
 
         if(!$note){
-            return redirect()->route('showAllNotes')->with('error', 'Note Not Found');
+            return redirect()->route('showAllNotes')->with('error');
         }
 
         $validated = $request->validate([
-            'title' => 'nullable|string|max:255',
-            'desc' => 'nullable|string|max:100000'
+            'title' => 'required|string|max:255',
+            'desc' => 'required|string|max:100000'
         ]);
 
-        $notes = new Note();
+        $note->title = $validated['title'];
+        $note->desc = $validated['desc'];
+        $note->save();
 
-        $notes->title = $validated['title'];
-        $notes->desc = $validated['desc'];
-        $notes->save();
-
-        return redirect()->route('showAllNotes')->with('success', 'Note Successfully Updated');
+        return redirect()->route('showAllNotes')->with('success');
 
     }
 
@@ -77,10 +75,10 @@ class NoteController extends Controller
 
         if($note){
             $note->delete();
-            return redirect()->route('showAllNotes', ['id' => $note->id])->with('success', 'Successfully Deleted');
+            return redirect()->route('showAllNotes', ['id' => $note->id])->with('success');
         }
 
-        return redirect()->route('showAllNotes')->with('error', 'No such note is found');
+        return redirect()->route('showAllNotes')->with('error');
 
 
 

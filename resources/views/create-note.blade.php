@@ -11,11 +11,11 @@
 
     <form action="{{Route('storeNote')}}" method="POST">
         @csrf
-        <label for="title">Title: </label>
-        <input type="text" id="title" name="title" required>
+        <label for="title"></label>
+        <input type="text" id="title" placeholder="Title" name="title" required>
         <br>
-        <label for="desc">Description: </label>
-        <input type="text" id="desc" name="desc" required>
+        <label for="desc"></label>
+        <input type="text" id="desc" placeholder="Description" name="desc" required>
         <br>
         <button type="submit">
             Create Note

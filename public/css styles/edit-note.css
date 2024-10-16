@@ -1,0 +1,33 @@
+header h1{
+    margin-bottom: 20px;
+    visibility: hidden;
+}
+
+#title{
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    max-width: 95vw;
+    align-content: center;
+    justify-content: center;
+    border: hidden;
+    border-width: 5px;
+    margin-bottom: 20px;
+}
+
+#title:hover{
+    border: solid 1px grey;
+}
+
+#desc {
+    display: flex;
+    flex-direction: column; /* Makes sure the content flows top to bottom */
+    padding: 20px;
+    height: auto; /* Adjust height as needed */
+    width: 100%;
+    max-width: 95vw;
+    align-items: flex-start; /* Aligns items to the top left corner */
+    text-align: start;
+    word-wrap: break-word; /* Ensures long words will break onto the next line */
+}
+
